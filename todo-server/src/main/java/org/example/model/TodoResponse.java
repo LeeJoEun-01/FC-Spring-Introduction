@@ -15,7 +15,8 @@ public class TodoResponse {
     private Boolean completed;
     private String url;
 
-//  todo entity를 파라미터로 받는 생성가 추가
+//    todo entity를 파라미터로 받는 생성가 추가
+
     public TodoResponse(TodoEntity todoEntity) {
         this.id = todoEntity.getId();
         this.title = todoEntity.getTitle();
@@ -23,6 +24,6 @@ public class TodoResponse {
         this.completed = todoEntity.getCompleted();
 
 //      url은 todoEntity에서 받아오는 정보가 아니기 때문에 직접 작성
-        this.url = "htpp://localhost:8080/" + this.id;
+        this.url = "http://localhost:8080/" + this.id;
     }
 }

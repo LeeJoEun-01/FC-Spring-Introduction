@@ -32,10 +32,9 @@ public class TodoService {
     }
 
     public TodoEntity searchById(Long id) { //아이디 기준으로 조회
-        this.todoRepository.findById(id)
+        return this.todoRepository.findById(id)
                 //값이 없으면 NotFoundException 날려주기
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        return null;
     }
 
     public List<TodoEntity> searchAll() { //전체 리스트 조회
