@@ -5,7 +5,8 @@ public class AClazz {
     private SocketClient socketClient;
 
     public AClazz(){
-        this.socketClient = SocketClient.getInstance();
+        this.socketClient = SocketClient.getInstance(); //singleton 방식
+        //this.socketClient = new SocketClient(); //새로 객체를 만드는 방식
     }
 
     public SocketClient getSocketClient(){
