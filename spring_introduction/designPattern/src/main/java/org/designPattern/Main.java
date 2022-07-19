@@ -94,7 +94,7 @@ public class Main {
          */
 
 //  <Observer>
-        Button button = new Button("버튼");
+        Button button = new Button("버튼1");
 
         button.addListener(new IButtonListener() {
             @Override
