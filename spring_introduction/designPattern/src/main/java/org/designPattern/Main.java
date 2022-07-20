@@ -5,12 +5,17 @@ import org.designPattern.Observer.IButtonListener;
 import org.designPattern.adapter.*;
 import org.designPattern.aop.AopBrowser;
 import org.designPattern.decorator.*;
+import org.designPattern.facade.Ftp;
+import org.designPattern.facade.Reader;
+import org.designPattern.facade.SftpClient;
+import org.designPattern.facade.Writer;
 import org.designPattern.proxy.Browser;
 import org.designPattern.proxy.BrowserProxy;
 import org.designPattern.proxy.IBrowser;
 import org.designPattern.sigletonPattern.AClazz;
 import org.designPattern.sigletonPattern.BClazz;
 import org.designPattern.sigletonPattern.SocketClient;
+import org.designPattern.strategy.*;
 
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -94,6 +99,7 @@ public class Main {
          */
 
 //  <Observer>
+        /*
         Button button = new Button("버튼1");
 
         button.addListener(new IButtonListener() {
@@ -108,6 +114,59 @@ public class Main {
         button.click("메세지 전달 : click 2");
         button.click("메세지 전달 : click 3");
         button.click("메세지 전달 : click 4");
+         */
+
+//  <facade>
+        /*
+        Ftp ftpClient = new Ftp("www.foo.co.kr", 22, "/home/etc");
+        ftpClient.connect();
+        ftpClient.moveDirectory();
+
+        Writer writer = new Writer("text.tmp");
+        writer.fileConnect();
+        writer.write();
+
+        Reader reader = new Reader("text.tmp");
+        reader.fileConnect();
+        reader.fileRead();
+
+        // 여러 가지 객체 의존성들을
+        reader.fileDisconnect();
+        writer.fileDisconnect();
+        ftpClient.disConnect();
+
+        // 안쪽으로 숨겨 정면만 바라보게 한다.
+        SftpClient sftpClient = new SftpClient("www.foo.co.kr", 22,"/home/etc", "text.tmp");
+        sftpClient.connect();
+        sftpClient.write();
+        sftpClient.read();
+        sftpClient.disConnect();
+         */
+
+//  <Strategy>
+        //원본 객체는 그대로 두고 전략만 바꾼다.
+        Encoder encoder = new Encoder();
+
+        //base64
+        EncodingStrategy base64 = new Base64Strategy();
+        //normal
+        EncodingStrategy normal = new NormalStrategy();
+
+        String message = "hello java";
+
+        //전략 세팅
+        encoder.setEncodingStrategy(base64);
+        String base64Result = encoder.getMessage(message);
+        System.out.println(base64Result);
+
+        //전략 세팅
+        encoder.setEncodingStrategy(normal);
+        String normalResult = encoder.getMessage(message);
+        System.out.println(normalResult);
+
+        encoder.setEncodingStrategy(new AppendStrategy());
+        String appendResult = encoder.getMessage(message);
+        System.out.println(appendResult);
     }
 
     // 110v 콘센트
