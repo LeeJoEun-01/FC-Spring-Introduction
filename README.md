@@ -1,3 +1,7 @@
+# Spring Boot 프로젝트 생성
+- [spring initializr](https://start.spring.io/)
+![image](https://user-images.githubusercontent.com/78733700/182294531-3addbc3e-7a17-4ecb-b9fe-2c37dd50d43b.png)
+
 # IntelliJ에서 한글 파일 깨질 때
 ### 1. Error: nmappable character for encoding x-windows-949 경우
   - Settings(ctrl + alt + s) -> File Encodings
@@ -17,7 +21,3 @@
     + 재시작을 해도 안된다면?
     + `build`파일 삭제 후 다시 run
 <!-- 참고링크: https://beemiel.tistory.com/4 -->
-
-# Spring Boot 프로젝트 생성
-- [spring initializr](https://start.spring.io/)
-![image](https://user-images.githubusercontent.com/78733700/182294531-3addbc3e-7a17-4ecb-b9fe-2c37dd50d43b.png)
