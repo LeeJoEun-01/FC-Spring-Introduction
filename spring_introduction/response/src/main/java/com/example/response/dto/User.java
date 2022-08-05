@@ -1,12 +1,16 @@
 package com.example.response.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 @JsonNaming(value = PropertyNamingStrategy.SnakeCaseStrategy.class)
+@JsonInclude(JsonInclude.Include.NON_NULL)
+// null 값은 출력하지 않는다는 어노테이션
 public class User {
     private String name;
     private int age;
+    // age에 아무 값도 없을 경우 int 타입은 0을 리턴, null을 리턴하고 싶으면 타입을 Intrger로 바꾸자
     private String phoneNumber;
     private String address;
 
